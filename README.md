@@ -1,155 +1,208 @@
-# ⚡ EnergyCast AI — World Energy Consumption Forecasting
+# ⚡ EnergyCast AI — LSTM-Based Energy Forecasting
 
-**EnergyCast AI** is an AI-powered energy forecasting and analytics application that analyzes historical world energy consumption data and predicts future consumption using Long Short-Term Memory (LSTM) neural networks.
+An AI-powered web application that analyzes historical energy data and forecasts the next year's energy value using a Long Short-Term Memory (LSTM) neural network.
 
-The project combines time-series forecasting, interactive data visualization, and a user-friendly dashboard to help users explore energy trends and understand future consumption estimates.
+🔗 **Live Demo:** https://energycast-ai.onrender.com/
 
-## 🌍 Project Overview
+📂 **GitHub Repository:** 
 
-Energy consumption is an important factor in understanding global energy demand and planning for a sustainable future. EnergyCast AI uses historical energy data to visualize consumption patterns, evaluate forecasting performance, and estimate consumption for the next available year in the dataset.
+---
 
-The application is developed using Python and Google Colab, with an interactive web interface built using Gradio.
+## 📌 Project Overview
+
+EnergyCast AI is a machine learning web application developed to explore historical energy trends and predict future energy values from yearly data.
+
+The application uses an LSTM model, a type of recurrent neural network designed to learn patterns from sequential data. It takes the previous five years of energy values as input to generate a next-year forecast.
+
+The project combines time-series forecasting, data visualization, model evaluation, and interactive web deployment in a single application.
+
+## 🎯 Objectives
+
+- Analyze historical yearly energy data.
+- Identify patterns in time-series energy values.
+- Forecast the next year's energy value using an LSTM model.
+- Evaluate predictions using Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE).
+- Provide an interactive interface for exploring country-level forecasts.
+- Make the application accessible through a publicly hosted web link.
 
 ## ✨ Key Features
 
-- **📊 Historical Energy Analytics** — Visualize historical energy consumption trends by country.
-- **🔮 AI-Based Forecasting** — Predict the next year's energy consumption using an LSTM model.
-- **🌐 Country Selection** — Explore available countries through an interactive country selector.
-- **📈 Model Validation** — Compare actual energy consumption with model predictions.
-- **📉 Performance Evaluation** — Calculate Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE).
-- **🔍 Baseline Comparison** — Compare LSTM predictions with a previous-year baseline.
-- **📥 CSV Report Export** — Download prediction results and evaluation data.
-- **🎨 Interactive Dashboard** — Explore results through a modern, responsive Gradio interface.
+- **Country Selection:** Select a country from the available dataset.
+- **Historical Data Visualization:** View yearly energy values in a line chart.
+- **LSTM Forecasting:** Predict the next year's energy value using the previous five years.
+- **Model Evaluation:** Compare actual and predicted values for the test period.
+- **Performance Metrics:** Display MAE and RMSE.
+- **CSV Report Download:** Download historical values and the forecast as a CSV file.
+- **Interactive Web Interface:** Use the application through a Gradio interface.
+- **Cloud Deployment:** Access the application online through Render.
 
-## 🛠️ Technologies Used
+## 🛠️ Technology Stack
 
 | Technology | Purpose |
 |---|---|
 | Python | Core programming language |
-| Google Colab | Development and execution environment |
-| Pandas | Dataset handling and preprocessing |
+| Pandas | Data loading and manipulation |
 | NumPy | Numerical computations |
-| Matplotlib | Data visualization |
 | Scikit-learn | Data normalization and evaluation metrics |
-| TensorFlow / Keras | LSTM model development |
-| Gradio | Interactive web application interface |
+| TensorFlow / Keras | LSTM model development and training |
+| Matplotlib | Data visualization |
+| Gradio | Interactive web interface |
+| Render | Cloud hosting and deployment |
+| Git & GitHub | Version control and source code management |
 
-## 🧠 Machine Learning Approach
+## ⚙️ How It Works
 
-EnergyCast AI uses a time-series forecasting workflow:
-
-1. **Data Collection** — Load the World Energy Consumption dataset.
-2. **Data Preprocessing** — Clean country names, identify year columns, and handle missing or invalid values.
-3. **Feature Scaling** — Normalize energy consumption values using MinMaxScaler.
-4. **Sequence Creation** — Use previous years of energy consumption as input features.
-5. **Model Training** — Train an LSTM neural network on historical data.
-6. **Model Evaluation** — Evaluate predictions using MAE and RMSE on a chronological test set.
-7. **Future Forecasting** — Estimate energy consumption for the year following the latest available year.
-8. **Visualization and Reporting** — Display charts, performance metrics, and downloadable prediction results.
+1. **Data Loading:** Load a CSV dataset containing country names and yearly energy values.
+2. **Data Preprocessing:** Convert yearly values to numeric data, handle missing values, and select valid historical observations.
+3. **Normalization:** Scale the energy values using MinMaxScaler.
+4. **Sequence Creation:** Create input sequences using the previous five years of data.
+5. **Model Training:** Train an LSTM neural network on earlier observations.
+6. **Model Evaluation:** Evaluate predictions on a later, chronologically separated test set using MAE and RMSE.
+7. **Forecast Generation:** Use the latest five yearly values to predict the next year.
+8. **Visualization and Reporting:** Display the forecast, compare test predictions, and provide a downloadable CSV report.
 
 ## 🏗️ System Workflow
 
 ```text
-World Energy Consumption Dataset
+Historical Energy Dataset (CSV)
               |
               v
-      Data Preprocessing
+       Data Preprocessing
               |
               v
-      Feature Normalization
+      Missing Value Handling
               |
               v
-   Time-Series Sequence Creation
+       MinMax Normalization
               |
               v
-        LSTM Model
-              |
-       +------+------+
-       |             |
-       v             v
-  Model Testing   Future Forecast
-       |             |
-       v             v
-  MAE / RMSE     Next-Year Estimate
-       |             |
-       +------+------+
+    Five-Year Sequence Creation
               |
               v
-       Gradio Dashboard
+        LSTM Model Training
               |
               v
-   Charts, Results and CSV Report
+       Model Evaluation
+         (MAE and RMSE)
+              |
+              v
+       Next-Year Forecast
+              |
+              v
+     Gradio Web Application
+              |
+              v
+      Render Cloud Deployment
 ```
 
-## 📂 Project Structure
+## 📊 Model Evaluation
+
+EnergyCast AI uses two regression metrics to evaluate its test predictions.
+
+- **Mean Absolute Error (MAE):** Measures the average absolute difference between actual and predicted values.
+- **Root Mean Squared Error (RMSE):** Measures prediction error while giving greater weight to larger errors.
+
+Lower values generally indicate smaller prediction errors when comparing models on the same dataset and scale.
+
+## 📁 Project Structure
 
 ```text
-EnergyCast-AI/
+energycast-ai/
 │
-├── Copy_of_World_energy_consumption.ipynb
-├── README.md
-└── world_energy_consumption.csv
+├── app.py
+├── requirements.txt
+├── energy_data.csv
+└── README.md
 ```
 
-*Note: The CSV filename is an example. Use the actual dataset filename in your repository. Include the dataset only if its license permits redistribution.*
+*Note: `energy_data.csv` is an example filename. Use the actual CSV filename in your repository.*
 
-## 🚀 How to Run the Project
+## 🚀 Run Locally
 
-### Option 1: Run in Google Colab
+### Prerequisites
 
-1. Open the project notebook in Google Colab.
-2. Upload or load the World Energy Consumption dataset.
-3. Run the notebook cells in order.
-4. Install the required Python libraries.
-5. Execute the EnergyCast AI dashboard cell.
-6. Open the Gradio link generated by the notebook.
-7. Select a country and generate a forecast.
+- Python 3.10 or another Python version compatible with your installed TensorFlow release
+- pip
+- Git
 
-### Option 2: Open from GitHub
+### 1. Clone the repository
 
-1. Visit this repository.
-2. Open the `.ipynb` notebook.
-3. Select **Open in Colab**, or download the notebook and upload it to Google Colab.
-4. Follow the execution steps above.
+```bash
+git clone https://energycast-ai.onrender.com/
+```
 
-## 📏 Evaluation Metrics
+### 2. Navigate to the project folder
 
-**Mean Absolute Error (MAE)** measures the average absolute difference between actual and predicted values.
+```bash
+cd energycast-ai
+```
 
-**Root Mean Squared Error (RMSE)** measures prediction error while penalizing larger errors more strongly.
+### 3. Create a virtual environment
 
-The dashboard also compares the LSTM model against a simple previous-year baseline to provide additional context for evaluating forecast performance.
+```bash
+python -m venv venv
+```
 
-## 🎯 Applications
+Activate it on Windows:
 
-- Exploring historical energy consumption patterns.
-- Understanding country-level energy trends.
-- Demonstrating AI-based time-series forecasting.
-- Supporting educational research in energy analytics.
-- Exploring data-driven approaches to energy planning.
+```bash
+venv\Scripts\activate
+```
+
+### 4. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Start the application
+
+```bash
+python app.py
+```
+
+Open the local URL displayed in the terminal to use the application.
+
+## ☁️ Deployment
+
+EnergyCast AI is deployed using **Render**, making the application accessible through a web browser without requiring users to run the code locally.
+
+- **Live Application:** https://energycast-ai.onrender.com/
+- **Source Code:** YOUR_GITHUB_REPOSITORY_URL
+
+The application uses a Python web service with Gradio and TensorFlow CPU dependencies.
 
 ## 🔮 Future Enhancements
 
-- Add more energy indicators, such as renewable energy and electricity generation.
-- Compare LSTM with GRU, RNN, and other forecasting algorithms.
-- Add interactive comparisons between multiple countries.
-- Improve missing-value handling and forecasting accuracy.
-- Deploy the dashboard as a persistent public web application.
-- Integrate regularly updated energy datasets.
+- Compare LSTM with GRU and other time-series forecasting models.
+- Add forecasting for multiple future years.
+- Improve missing-value handling and data validation.
+- Add more model evaluation and visualization options.
+- Introduce automated model comparison and hyperparameter tuning.
+- Integrate additional energy datasets and more detailed trend analysis.
 
-## ⚠️ Limitations
+## 🎓 Learning Outcomes
 
-- Forecast quality depends on the completeness and quality of the input dataset.
-- Predictions are estimates and are not guaranteed to match future consumption.
-- Model performance may vary across countries and datasets.
-- The Gradio public link generated from Google Colab may be temporary and depend on the active runtime.
+Through this project, I gained practical experience with:
 
-## 👩‍💻 Project Purpose
+- Time-series data preprocessing and normalization.
+- Sequential data preparation for deep learning.
+- LSTM model training and prediction.
+- Regression model evaluation.
+- Interactive machine learning application development.
+- GitHub version control and cloud deployment.
 
-EnergyCast AI demonstrates how machine learning and interactive visualization can be combined to analyze historical energy data and generate future consumption estimates.
+## ⚠️ Disclaimer
 
-**Built with Python, TensorFlow, and Gradio. ⚡🌱**
+The forecast is an estimate based on historical data and the trained model. It is not a guarantee of future energy consumption. Prediction quality depends on data quality, the amount of available historical information, and model performance.
+
+## 👩‍💻 Author
+
+**Darsani Priya RJ**
+
+Computer Science and Engineering Student
 
 ---
 
-*If you find this project useful, consider giving the repository a ⭐ on GitHub.*
+⭐ If you find this project useful, consider starring the repository!
+
