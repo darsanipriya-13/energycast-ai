@@ -4,7 +4,7 @@ An AI-powered web application that analyzes historical energy data and forecasts
 
 🔗 **Live Demo:** https://energycast-ai.onrender.com/
 
-📂 **GitHub Repository:** 
+📂 **GitHub Repository:** https://github.com/darsanipriya-13/energycast-ai
 
 ---
 
@@ -168,7 +168,7 @@ Open the local URL displayed in the terminal to use the application.
 EnergyCast AI is deployed using **Render**, making the application accessible through a web browser without requiring users to run the code locally.
 
 - **Live Application:** https://energycast-ai.onrender.com/
-- **Source Code:** YOUR_GITHUB_REPOSITORY_URL
+- **Source Code:** https://github.com/darsanipriya-13/energycast-ai
 
 The application uses a Python web service with Gradio and TensorFlow CPU dependencies.
 
